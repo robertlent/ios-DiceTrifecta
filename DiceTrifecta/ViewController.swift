@@ -29,12 +29,26 @@ class ViewController: UIViewController {
         newGame()
     }
     
+    @IBAction func newGameButton(_ sender: Any) {
+        newGame()
+    }
+    
+    @IBAction func clearHighScore(_ sender: Any) {
+        highScore = 0
+        defaults.set(0, forKey: "highScore")
+        highScoreLabel.text = "High Score: \(highScore)"
+    }
+    
     func newGame() {
         score = 0
         highScore = defaults.integer(forKey: "highScore")
         
         scoreLabel.text = "Score: \(score)"
         highScoreLabel.text = "High Score: \(highScore)"
+        
+        dice1View.image = UIImage(named: "dice-6")
+        dice2View.image = UIImage(named: "dice-6")
+        dice3View.image = UIImage(named: "dice-6")
     }
     
     func updateScore(points: Int) {
